@@ -2,25 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package montecarlo;
+package montecarlo.algorithm;
 
 /**
  *
  * @author RoyZheng
  */
-public class Particle {
+public class Robot {
 
     Point point;
 
-    public Particle(Point p) {
-        this.point = p;
-    }
-
-    public Particle(int x, int y) {
+    public Robot(int x, int y) {
         this.point = new Point(x, y);
     }
-
-    public Point getPoint() {
+    public Point getPoint(){
         return this.point;
     }
 }

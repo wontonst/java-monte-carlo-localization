@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package montecarlo;
+package montecarlo.algorithm;
 
 /**
  *
  * @author RoyZheng
  */
-public enum KeyboardInput {
+public enum SensorEnum {
 
-    W, A, S, D, UP, DOWN, LEFT, RIGHT
+    NORTH, SOUTH, EAST, WEST
 }

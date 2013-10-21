@@ -2,17 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package montecarlo;
+package montecarlo.algorithm;
 
+import montecarlo.gui.Base;
+import montecarlo.gui.Gui;
 import java.util.List;
-import static montecarlo.KeyboardInput.A;
-import static montecarlo.KeyboardInput.D;
-import static montecarlo.KeyboardInput.DOWN;
-import static montecarlo.KeyboardInput.LEFT;
-import static montecarlo.KeyboardInput.RIGHT;
-import static montecarlo.KeyboardInput.S;
-import static montecarlo.KeyboardInput.UP;
-import static montecarlo.KeyboardInput.W;
+import montecarlo.gui.KeyboardInput;
+import static montecarlo.gui.KeyboardInput.A;
+import static montecarlo.gui.KeyboardInput.D;
+import static montecarlo.gui.KeyboardInput.DOWN;
+import static montecarlo.gui.KeyboardInput.LEFT;
+import static montecarlo.gui.KeyboardInput.RIGHT;
+import static montecarlo.gui.KeyboardInput.S;
+import static montecarlo.gui.KeyboardInput.UP;
+import static montecarlo.gui.KeyboardInput.W;
 
 /**
  *

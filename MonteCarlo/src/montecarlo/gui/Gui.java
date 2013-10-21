@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package montecarlo;
+package montecarlo.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,6 +10,11 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
+import montecarlo.algorithm.Particle;
+import montecarlo.algorithm.Point;
+import montecarlo.algorithm.Robot;
+import montecarlo.algorithm.Sensor;
+import montecarlo.algorithm.SensorEnum;
 
 /**
  * Make sure you run setParticles, setRobotPosition, and setRobot, and
@@ -24,9 +29,9 @@ public class Gui extends JPanel {
     public static int ROBOT_WIDTH = 14;
     public static int DIM_X = 800;
     public static int DIM_Y = 800;
-    List<Particle> particles;//list of particles to draw
-    Robot robot;//robot to draw
-    Sensor sensor;//sensor animations to draw (sensor = a line going from robot to wall)
+    protected List<Particle> particles;//list of particles to draw
+    protected Robot robot;//robot to draw
+    protected Sensor sensor;//sensor animations to draw (sensor = a line going from robot to wall)
 
     public Gui() {
         this.particles = new ArrayList<Particle>();
@@ -61,16 +66,16 @@ public class Gui extends JPanel {
         if (dir != null) {
             switch (dir) {
                 case NORTH:
-                    g.fillRect(this.robot.getPoint().x()+ROBOT_WIDTH/2, 0, SENSOR_WIDTH, this.robot.getPoint().y());
+                    g.fillRect(this.robot.getPoint().x() + ROBOT_WIDTH / 2, 0, SENSOR_WIDTH, this.robot.getPoint().y());
                     break;
                 case SOUTH:
-                    g.fillRect(this.robot.getPoint().x()+ROBOT_WIDTH/2, this.robot.getPoint().y()+ROBOT_WIDTH, SENSOR_WIDTH, DIM_Y - this.robot.getPoint().y());
+                    g.fillRect(this.robot.getPoint().x() + ROBOT_WIDTH / 2, this.robot.getPoint().y() + ROBOT_WIDTH, SENSOR_WIDTH, DIM_Y - this.robot.getPoint().y());
                     break;
                 case EAST:
-                    g.fillRect(this.robot.getPoint().x()+ROBOT_WIDTH, this.robot.getPoint().y()+ROBOT_WIDTH/2, DIM_X - this.robot.getPoint().x(), SENSOR_WIDTH);
+                    g.fillRect(this.robot.getPoint().x() + ROBOT_WIDTH, this.robot.getPoint().y() + ROBOT_WIDTH / 2, DIM_X - this.robot.getPoint().x(), SENSOR_WIDTH);
                     break;
                 case WEST:
-                    g.fillRect(0, this.robot.getPoint().y()+ROBOT_WIDTH/2, this.robot.getPoint().x(), SENSOR_WIDTH);
+                    g.fillRect(0, this.robot.getPoint().y() + ROBOT_WIDTH / 2, this.robot.getPoint().x(), SENSOR_WIDTH);
                     break;
             }
         }
