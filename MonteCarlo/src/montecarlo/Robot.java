@@ -15,4 +15,7 @@ public class Robot {
     public Robot(int x, int y) {
         this.point = new Point(x, y);
     }
+    public Point getPoint(){
+        return this.point;
+    }
 }
