@@ -5,9 +5,6 @@
 package montecarlo;
 
 import java.util.List;
-import java.util.concurrent.Semaphore;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import static montecarlo.KeyboardInput.A;
 import static montecarlo.KeyboardInput.D;
 import static montecarlo.KeyboardInput.DOWN;
@@ -51,7 +48,7 @@ public class MonteCarlo {
     private void generateInitialParticles() {
         java.util.Random rand;
         rand = new java.util.Random();
-        for (int i = 0; i != 100; i++) {
+        for (int i = 0; i != 500; i++) {
             this.particles.add(new Particle(rand.nextInt(Gui.DIM_X) + 1, rand.nextInt(Gui.DIM_Y) + 1));
         }
     }

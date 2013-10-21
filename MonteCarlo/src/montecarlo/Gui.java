@@ -20,8 +20,8 @@ import javax.swing.JPanel;
 public class Gui extends JPanel {
 
     public static int SENSOR_WIDTH = 2;
-    public static int PARTICLE_WIDTH = 1;
-    public static int ROBOT_WIDTH = 3;
+    public static int PARTICLE_WIDTH = 3;
+    public static int ROBOT_WIDTH = 14;
     public static int DIM_X = 800;
     public static int DIM_Y = 800;
     List<Particle> particles;//list of particles to draw
@@ -38,6 +38,7 @@ public class Gui extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
+        System.out.println("Redrawing with " + this.particles.size() + " particles.");
         g2d.clearRect(0, 0, DIM_X, DIM_Y);
 
         g2d.setColor(Color.BLACK);
@@ -48,10 +49,11 @@ public class Gui extends JPanel {
         this.drawRobot(g2d);
         g2d.setColor(Color.BLUE);
         this.drawSensor(g2d);
+
     }
 
     private void drawParticle(Point p, Graphics2D g) {
-        g.drawOval(p.x(), p.y(), PARTICLE_WIDTH, PARTICLE_WIDTH);
+        g.fillOval(p.x(), p.y(), PARTICLE_WIDTH, PARTICLE_WIDTH);
     }
 
     private void drawSensor(Graphics2D g) {
@@ -59,23 +61,23 @@ public class Gui extends JPanel {
         if (dir != null) {
             switch (dir) {
                 case NORTH:
-                    g.drawRect(this.robot.getPoint().x(), 0, SENSOR_WIDTH, this.robot.getPoint().y());
+                    g.fillRect(this.robot.getPoint().x()+ROBOT_WIDTH/2, 0, SENSOR_WIDTH, this.robot.getPoint().y());
                     break;
                 case SOUTH:
-                    g.drawRect(this.robot.getPoint().x(), this.robot.getPoint().y(), SENSOR_WIDTH, DIM_Y - this.robot.getPoint().y());
+                    g.fillRect(this.robot.getPoint().x()+ROBOT_WIDTH/2, this.robot.getPoint().y()+ROBOT_WIDTH, SENSOR_WIDTH, DIM_Y - this.robot.getPoint().y());
                     break;
                 case EAST:
-                    g.drawRect(this.robot.getPoint().x(), this.robot.getPoint().y(), DIM_X - this.robot.getPoint().x(), SENSOR_WIDTH);
+                    g.fillRect(this.robot.getPoint().x()+ROBOT_WIDTH, this.robot.getPoint().y()+ROBOT_WIDTH/2, DIM_X - this.robot.getPoint().x(), SENSOR_WIDTH);
                     break;
                 case WEST:
-                    g.drawRect(0, this.robot.getPoint().y(), this.robot.getPoint().x(), SENSOR_WIDTH);
+                    g.fillRect(0, this.robot.getPoint().y()+ROBOT_WIDTH/2, this.robot.getPoint().x(), SENSOR_WIDTH);
                     break;
             }
         }
     }
 
     private void drawRobot(Graphics2D g) {
-        g.drawOval(this.robot.getPoint().x(), this.robot.getPoint().y(), ROBOT_WIDTH, ROBOT_WIDTH);
+        g.fillOval(this.robot.getPoint().x(), this.robot.getPoint().y(), ROBOT_WIDTH, ROBOT_WIDTH);
     }
 
     public List<Particle> getParticles() {

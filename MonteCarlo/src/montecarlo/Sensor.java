@@ -16,6 +16,7 @@ public class Sensor {
 
     public Sensor(Robot r) {
         this.robot = r;
+      //  this.firing_direction = SensorEnum.WEST;
     }
 
     public int fireNorth() {
