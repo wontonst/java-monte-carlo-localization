@@ -27,17 +27,25 @@ public class Gui extends JPanel {
     public static int SENSOR_WIDTH = 2;
     public static int PARTICLE_WIDTH = 3;
     public static int ROBOT_WIDTH = 14;
+    public static int ROBOT_EST_WIDTH = 7;
     public static int DIM_X = 800;
     public static int DIM_Y = 800;
     protected List<Particle> particles;//list of particles to draw
     protected Robot robot;//robot to draw
     protected Sensor sensor;//sensor animations to draw (sensor = a line going from robot to wall)
+    protected Point robot_estimate;//estimated robot position
 
     public Gui() {
         this.particles = new ArrayList<Particle>();
         this.robot = new Robot(DIM_X / 2, DIM_Y / 2);
         this.sensor = new Sensor(this.robot);
+        this.robot_estimate = new Point(DIM_X / 2, DIM_Y / 2);
         this.setSize(DIM_X, DIM_Y);
+    }
+
+    public void setEstimatePosition(int x, int y) {
+        this.robot_estimate.setX(x);
+        this.robot_estimate.setY(y);
     }
 
     @Override
@@ -54,7 +62,12 @@ public class Gui extends JPanel {
         this.drawRobot(g2d);
         g2d.setColor(Color.BLUE);
         this.drawSensor(g2d);
+        g2d.setColor(Color.YELLOW);
+        this.drawEstimatedRobotPosition(g2d);
+    }
 
+    private void drawEstimatedRobotPosition(Graphics2D g) {
+        g.fillOval(this.robot_estimate.x() + ROBOT_EST_WIDTH / 2, this.robot_estimate.y() + ROBOT_EST_WIDTH / 2, ROBOT_EST_WIDTH, ROBOT_EST_WIDTH);
     }
 
     private void drawParticle(Point p, Graphics2D g) {
@@ -82,7 +95,7 @@ public class Gui extends JPanel {
     }
 
     private void drawRobot(Graphics2D g) {
-        g.fillOval(this.robot.getPoint().x()-ROBOT_WIDTH/2, this.robot.getPoint().y()-ROBOT_WIDTH/2, ROBOT_WIDTH, ROBOT_WIDTH);
+        g.fillOval(this.robot.getPoint().x() - ROBOT_WIDTH / 2, this.robot.getPoint().y() - ROBOT_WIDTH / 2, ROBOT_WIDTH, ROBOT_WIDTH);
     }
 
     public List<Particle> getParticles() {
