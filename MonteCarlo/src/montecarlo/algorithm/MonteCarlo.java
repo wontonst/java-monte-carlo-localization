@@ -32,42 +32,49 @@ public class MonteCarlo {
                 this.sensor.stopFire();
                 robot.point.y -= 20;
                 moveParticles(0, -20);
-
+                moveEstimate();
                 break;
             case A:
                 this.sensor.stopFire();
                 robot.point.x -= 20;
                 moveParticles(-20, 0);
+                moveEstimate();
                 break;
             case S:
                 this.sensor.stopFire();
                 this.robot.point.y += 20;
                 moveParticles(0, 20);
+                moveEstimate();
                 break;
             case D:
                 this.sensor.stopFire();
                 this.robot.point.x += 20;
                 moveParticles(20, 0);
+                moveEstimate();
                 break;
             case UP:
                 this.sensor.stopFire();
                 this.sensor.fireNorth();
                 comparePointsY(calculateStandardDeviationY(robot.point.y), robot.point.y);
+                moveEstimate();
                 break;
             case DOWN:
                 this.sensor.stopFire();
                 this.sensor.fireSouth();
                 comparePointsY(calculateStandardDeviationY(robot.point.y), robot.point.y);
+                moveEstimate();
                 break;
             case LEFT:
                 this.sensor.stopFire();
                 this.sensor.fireWest();
                 comparePointsX(calculateStandardDeviationX(robot.point.x), robot.point.x);
+                moveEstimate();
                 break;
             case RIGHT:
                 this.sensor.stopFire();
                 this.sensor.fireEast();
                 comparePointsX(calculateStandardDeviationX(robot.point.x), robot.point.x);
+                moveEstimate();
                 break;
         }
         //update particles
@@ -121,6 +128,24 @@ public class MonteCarlo {
             }
         }
     }
+    
+    public void moveEstimate()
+    {
+        int tempX =0;
+        int tempY =0;
+        
+        for (int i =0; i<particles.size(); i++)
+        {
+            tempX+= particles.get(i).point.x;
+            tempY+= particles.get(i).point.y;
+        }
+        
+        tempX = tempX/particles.size();
+        tempY = tempY/particles.size();
+        
+        this.gui.setEstimatePosition(tempX, tempY);
+    }
+    
     List<Particle> particles;
     Robot robot;
     Sensor sensor;
