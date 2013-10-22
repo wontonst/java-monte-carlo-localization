@@ -82,7 +82,7 @@ public class Gui extends JPanel {
     }
 
     private void drawRobot(Graphics2D g) {
-        g.fillOval(this.robot.getPoint().x(), this.robot.getPoint().y(), ROBOT_WIDTH, ROBOT_WIDTH);
+        g.fillOval(this.robot.getPoint().x()-ROBOT_WIDTH/2, this.robot.getPoint().y()-ROBOT_WIDTH/2, ROBOT_WIDTH, ROBOT_WIDTH);
     }
 
     public List<Particle> getParticles() {

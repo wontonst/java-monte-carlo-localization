@@ -24,7 +24,7 @@ public class Base extends JFrame implements KeyListener {
         this.add(gui);
         this.addKeyListener(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(Gui.DIM_X + 20, Gui.DIM_Y + 30);
+        this.setSize(Gui.DIM_X + 0, Gui.DIM_Y + 0);
         this.setResizable(false);
         this.setVisible(true);
     }
